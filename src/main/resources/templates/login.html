@@ -1,0 +1,25 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4" xmlns="http://www.w3.org/1999/html">
+<head th:replace="mainBar :: head">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title th:utext="#{menu.mainPage}"></title>
+</head>
+<body>
+<nav th:replace="mainBar :: nav"></nav>
+<h1 th:utext="#{menu.login}"></h1>
+<div class="d-flex justify-content-center">
+    <form action="#" th:action="@{/login}" method="post" >
+        <div class="form-group">
+            <label th:utext="#{login.email}"></label>
+            <input type="text" class="form-control" value="" name="email">
+        </div>
+        <div class="form-group">
+            <label th:utext="#{login.password}"></label>
+            <input type="password" class="form-control" value="" name="password">
+            <a href="#" th:utext="#{login.passwordForgot}"/>
+        </div>
+        <button type="submit" class="btn btn-success" th:utext="#{button.login}"></button>
+    </form>
+</div>
+</body>
+</html>

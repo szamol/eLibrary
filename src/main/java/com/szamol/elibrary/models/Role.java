@@ -1,4 +1,4 @@
-package com.szamol.elibrary.model;
+package com.szamol.elibrary.models;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
