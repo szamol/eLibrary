@@ -1,17 +1,54 @@
 package com.szamol.elibrary.controllers;
 
 import com.szamol.elibrary.models.User;
+import com.szamol.elibrary.services.UserService;
+import com.szamol.elibrary.validators.RegisterValidator;
+import org.springframework.context.MessageSource;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+
+import java.util.Locale;
+import java.util.Map;
 
 @Controller
 public class RegisterController {
 
+    private UserService userService;
+
+    MessageSource messageSource;
+
+    public RegisterController(UserService userService) {
+        this.userService = userService;
+    }
+
     @GetMapping("/register")
-    public String showRegisterPage(Model model) {
+    public String showRegisterPage(Map<String, Object> model) {
         User user = new User();
-        model.addAttribute("user", user);
+        model.put("user", user);
         return "register";
+    }
+
+    @PostMapping("/addUser")
+    public String registerAction(User user, BindingResult bindingResult, Model model, Locale locale) {
+        String pageToReturn = null;
+
+        User userExist = userService.getUser(user.getEmail());
+        new RegisterValidator().validate(user, bindingResult);
+        new RegisterValidator().validateEmailExists(userExist, bindingResult);
+
+        if(bindingResult.hasErrors()) {
+            pageToReturn = "register";
+        } else {
+            userService.saveUser(user);
+            //model.addAttribute("message", messageSource.getMessage("success.register.message", null, locale));
+            model.addAttribute("user", new User());
+            pageToReturn = "register";
+        }
+
+        return pageToReturn;
+
     }
 }

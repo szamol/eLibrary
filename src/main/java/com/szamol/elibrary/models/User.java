@@ -6,13 +6,21 @@ import javax.validation.constraints.NotNull;
 import java.util.Set;
 
 @Entity
-@Table(name = "user")
+@Table(name = "users")
 public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "user_id")
     private int id;
+
+    @Column(name = "first_name")
+    @NotNull
+    private String firstName;
+
+    @Column(name = "lastName")
+    @NotNull
+    private String lastName;
 
     @Column(name = "email")
     @NotNull
@@ -21,14 +29,6 @@ public class User {
     @Column(name = "password")
     @NotNull
     private String password;
-
-    @Column(name = "name")
-    @NotNull
-    private String firstName;
-
-    @Column(name = "lastName")
-    @NotNull
-    private String lastName;
 
     @Column(name = "active")
     @NotNull
