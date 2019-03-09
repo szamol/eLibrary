@@ -76,10 +76,10 @@
             <artifactId>jaxb-api</artifactId>
             <version>2.3.1</version>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/org.thymeleaf.extras/thymeleaf-extras-springsecurity4 -->
+
         <dependency>
             <groupId>org.thymeleaf.extras</groupId>
-            <artifactId>thymeleaf-extras-springsecurity4</artifactId>
+            <artifactId>thymeleaf-extras-springsecurity5</artifactId>
         </dependency>
 
 

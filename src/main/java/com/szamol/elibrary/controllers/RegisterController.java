@@ -17,11 +17,11 @@ import java.util.Map;
 public class RegisterController {
 
     private UserService userService;
+    private MessageSource messageSource;
 
-    MessageSource messageSource;
-
-    public RegisterController(UserService userService) {
+    public RegisterController(UserService userService, MessageSource messageSource) {
         this.userService = userService;
+        this.messageSource = messageSource;
     }
 
     @GetMapping("/register")
@@ -43,8 +43,8 @@ public class RegisterController {
             pageToReturn = "register";
         } else {
             userService.saveUser(user);
-            //model.addAttribute("message", messageSource.getMessage("success.register.message", null, locale));
             model.addAttribute("user", new User());
+            model.addAttribute("success", messageSource.getMessage("success.register.message", null, locale));
             pageToReturn = "register";
         }
 

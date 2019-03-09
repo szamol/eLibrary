@@ -1,0 +1,32 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4" xmlns="http://www.w3.org/1999/html">
+<head th:replace="mainBar :: head">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title th:utext="#{menu.profile}"></title>
+</head>
+<body>
+    <nav th:replace="mainBar :: nav"></nav>
+    <h1 th:utext="#{menu.profile}"></h1>
+
+    <div class="d-flex justify-content-center">
+        <div class="d-flex flex-column" style="text-align: center">
+            <p th:utext="#{register.firstName}+':'" class="font-weight-light"></p>
+            <p th:utext="${user.getFirstName()}"></p>
+            <p th:utext="#{register.lastName}+':'" class="font-weight-light"></p>
+            <p th:utext="${user.getLastName()}"></p>
+            <p th:utext="#{register.email}+':'" class="font-weight-light"></p>
+            <p th:utext="${user.getEmail()}"></p>
+            <p th:utext="#{register.accountType}+':'" class="font-weight-light"></p>
+            <div th:switch="${user.getRoleNumber()}">
+                <p th:case="1" th:utext="#{roles.admin}"></p>
+                <p th:case="2" th:utext="#{roles.regular}"></p>
+            </div>
+            <button type="button" class="btn btn-primary" onclick="location.href='/changePassword'" th:utext="#{passwordChange.change}"></button>
+
+        </div>
+    </div>
+
+
+
+</body>
+</html>

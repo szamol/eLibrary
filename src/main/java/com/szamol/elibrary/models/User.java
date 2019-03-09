@@ -41,6 +41,15 @@ public class User {
     @Transient
     private String currentOperation;
 
+    @Transient
+    private int roleNumber;
+
+    @Transient
+    private String newPassword;
+
+    @Transient
+    private String newPasswordConfirm;
+
     public int getId() {
         return id;
     }
@@ -103,5 +112,29 @@ public class User {
 
     public void setCurrentOperation(String currentOperation) {
         this.currentOperation = currentOperation;
+    }
+
+    public int getRoleNumber() {
+        return roleNumber;
+    }
+
+    public void setRoleNumber(int roleNumber) {
+        this.roleNumber = roleNumber;
+    }
+
+    public String getNewPassword() {
+        return newPassword;
+    }
+
+    public void setNewPassword(String newPassword) {
+        this.newPassword = newPassword;
+    }
+
+    public String getNewPasswordConfirm() {
+        return newPasswordConfirm;
+    }
+
+    public void setNewPasswordConfirm(String newPasswordConfirm) {
+        this.newPasswordConfirm = newPasswordConfirm;
     }
 }

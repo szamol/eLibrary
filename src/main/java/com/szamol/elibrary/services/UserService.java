@@ -39,5 +39,9 @@ public class UserService {
         userRepository.save(user);
     }
 
+    public void changePassword(String newPassword, String email) {
+        userRepository.changePassword(bCryptPasswordEncoder.encode(newPassword), email);
+    }
+
 
 }
