@@ -10,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Arrays;
 import java.util.HashSet;
+import java.util.List;
 
 @Service
 @Transactional
@@ -42,6 +43,5 @@ public class UserService {
     public void changePassword(String newPassword, String email) {
         userRepository.changePassword(bCryptPasswordEncoder.encode(newPassword), email);
     }
-
 
 }

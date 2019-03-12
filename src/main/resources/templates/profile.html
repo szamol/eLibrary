@@ -11,13 +11,13 @@
     <div class="d-flex justify-content-center">
         <div class="d-flex flex-column" style="text-align: center">
             <p th:utext="#{register.firstName}+':'" class="font-weight-light"></p>
-            <p th:utext="${user.getFirstName()}"></p>
+            <p th:utext="${user.firstName}"></p>
             <p th:utext="#{register.lastName}+':'" class="font-weight-light"></p>
-            <p th:utext="${user.getLastName()}"></p>
+            <p th:utext="${user.lastName}"></p>
             <p th:utext="#{register.email}+':'" class="font-weight-light"></p>
-            <p th:utext="${user.getEmail()}"></p>
+            <p th:utext="${user.email}"></p>
             <p th:utext="#{register.accountType}+':'" class="font-weight-light"></p>
-            <div th:switch="${user.getRoleNumber()}">
+            <div th:switch="${user.roleNumber}">
                 <p th:case="1" th:utext="#{roles.admin}"></p>
                 <p th:case="2" th:utext="#{roles.regular}"></p>
             </div>

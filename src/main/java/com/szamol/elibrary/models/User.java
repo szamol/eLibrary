@@ -39,9 +39,6 @@ public class User {
     private Set<Role> role;
 
     @Transient
-    private String currentOperation;
-
-    @Transient
     private int roleNumber;
 
     @Transient
@@ -104,14 +101,6 @@ public class User {
 
     public void setRole(Set<Role> role) {
         this.role = role;
-    }
-
-    public String getCurrentOperation() {
-        return currentOperation;
-    }
-
-    public void setCurrentOperation(String currentOperation) {
-        this.currentOperation = currentOperation;
     }
 
     public int getRoleNumber() {

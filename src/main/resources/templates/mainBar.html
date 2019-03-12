@@ -30,6 +30,15 @@
             <li class="nav-item">
                 <a sec:authorize="isAuthenticated()" class="nav-link" th:href="@{/profile}" th:utext="#{menu.profile}"></a>
             </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" sec:authorize="hasRole('ROLE_ADMIN')" href="#" th:utext="#{menu.admin}" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" th:href="@{/admin/usersList}" th:utext="#{adminPanel.usersList}"></a>
+                </div>
+            </li>
+            <li class="nav-item">
+                <a  class="nav-link" ></a>
+            </li>
             <li class="nav-item">
                 <a sec:authorize="isAuthenticated()" class="nav-link" th:href="@{/logout}" th:utext="#{menu.logout}"></a>
             </li>

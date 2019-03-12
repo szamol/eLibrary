@@ -1,0 +1,37 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4" xmlns="http://www.w3.org/1999/html">
+<head th:replace="mainBar :: head">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title th:utext="#{menu.admin}"></title>
+</head>
+<body>
+<nav th:replace="mainBar :: nav"></nav>
+<h1 th:utext="#{menu.admin}"></h1>
+
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th scope="col">#</th>
+        <th scope="col" th:utext="#{register.firstName}"></th>
+        <th scope="col" th:utext="#{register.lastName}"></th>
+        <th scope="col" th:utext="#{register.email}"></th>
+        <th scope="col" th:utext="#{register.accountType}"></th>
+    </tr>
+    </thead>
+    <tbody>
+    <th:block th:each="user : ${users}">
+        <tr>
+            <td th:utext="${user.id}"></td>
+            <td th:utext="${user.firstName}"></td>
+            <td th:utext="${user.lastName}"></td>
+            <td th:utext="${user.email}"></td>
+            <div th:switch="${user.roleNumber}">
+                <td th:case="1" th:utext="#{roles.admin}"></td>
+                <td th:case="2" th:utext="#{roles.regular}"></td>
+            </div>
+        </tr>
+    </th:block>
+    </tbody>
+</table>
+</body>
+</html>

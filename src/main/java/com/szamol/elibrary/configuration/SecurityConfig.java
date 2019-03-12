@@ -16,7 +16,6 @@ import javax.sql.DataSource;
 
 @Configuration
 @EnableWebSecurity
-@EnableGlobalMethodSecurity(securedEnabled = true)
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
@@ -50,7 +49,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/addUser").permitAll()
                 .antMatchers("/profile").authenticated()
                 .antMatchers("/changePassword").authenticated()
-//                .antMatchers("/admin").hasAuthority("ROLE_ADMIN")
+                .antMatchers("/admin/usersList").hasAuthority("ROLE_ADMIN")
                 .anyRequest().authenticated()
                 .and().csrf().disable()
                 .formLogin()
