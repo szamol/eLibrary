@@ -30,4 +30,8 @@ public class AdminService {
     public List<User> searchUser(String expression) {
         return adminRepository.searchUser(expression);
     }
+
+    public void changeRole(int userId, int roleId) {
+        adminRepository.changeRole(userId, roleId);
+    }
 }
