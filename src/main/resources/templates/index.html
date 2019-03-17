@@ -8,6 +8,25 @@
     <nav th:replace="mainBar :: nav"></nav>
     <h1 th:utext="#{menu.mainPage}"></h1>
 
+    <div class=" d-flex justify-content-center" th:each="news:${newsList}">
+        <div class="card mt-2" style="width: 50rem;">
+            <div class="card-body">
+                <h5 class="card-title" th:utext="${news.title}"></h5>
+                <p class="card-text" th:utext="${news.content}"></p>
+                <ul class="list-group list-group-flush" style="text-align: right">
+                    <li class="list-group-item" th:utext="#{news.creationDate}+${news.creationDate}" style="color : gray"></li>
+                </ul>
+            </div>
+        </div>
+    </div>
 
+
+    <script>
+        $(".card-text").each(function () {
+            var text = $(this).text();
+            if(text.length > 200)
+                $(this).html(text.substr(0, 197) + '...')
+        })
+    </script>
 </body>
 </html>

@@ -78,11 +78,12 @@ public class AdminController {
         return page;
     }
 
-    public Map<Integer, String> prepareRoleMap() {
+    private Map<Integer, String> prepareRoleMap() {
         Locale locale = Locale.getDefault();
         Map<Integer, String> roleMap = new HashMap<>();
         roleMap.put(1, messageSource.getMessage("roles.admin", null, locale));
         roleMap.put(2, messageSource.getMessage("roles.regular", null, locale));
+        roleMap.put(3, messageSource.getMessage("roles.worker", null, locale));
         return roleMap;
     }
 }

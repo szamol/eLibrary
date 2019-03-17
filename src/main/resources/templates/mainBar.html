@@ -31,9 +31,16 @@
                 <a sec:authorize="isAuthenticated()" class="nav-link" th:href="@{/profile}" th:utext="#{menu.profile}"></a>
             </li>
             <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" sec:authorize="hasRole('ROLE_ADMIN')" href="#" th:utext="#{menu.admin}" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></a>
+                <a class="nav-link dropdown-toggle" sec:authorize="hasRole('ROLE_ADMIN')" th:utext="#{menu.admin}" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                     <a class="dropdown-item" th:href="@{/admin/usersList/1}" th:utext="#{adminPanel.usersList}"></a>
+                </div>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" sec:authorize="hasRole('ROLE_WORKER')" th:utext="#{menu.news}" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" th:href="@{/worker/news/}" th:utext="#{workerPanel.listOfNews}"></a>
+                    <a class="dropdown-item" th:href="@{/worker/news/addNews}" th:utext="#{workerPanel.addNews}"></a>
                 </div>
             </li>
             <li class="nav-item">

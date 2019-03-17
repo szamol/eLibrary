@@ -20,6 +20,7 @@
             <div th:switch="${user.roleNumber}">
                 <p th:case="1" th:utext="#{roles.admin}"></p>
                 <p th:case="2" th:utext="#{roles.regular}"></p>
+                <p th:case="3" th:utext="#{roles.worker}"></p>
             </div>
             <button type="button" class="btn btn-primary" onclick="location.href='/changePassword'" th:utext="#{passwordChange.change}"></button>
 
