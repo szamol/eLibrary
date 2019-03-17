@@ -2,6 +2,8 @@ package com.szamol.elibrary.services;
 
 import com.szamol.elibrary.models.News;
 import com.szamol.elibrary.repositories.NewsRepository;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -18,8 +20,8 @@ public class NewsService {
         this.newsRepository = newsRepository;
     }
 
-    public List<News> findAllNews() {
-        return newsRepository.findAll();
+    public Page<News> findAllNews(Pageable pageable) {
+        return newsRepository.findAll(pageable);
     }
 
     public List<News> findAllActiveNews() {
@@ -30,6 +32,10 @@ public class NewsService {
                 resultList.add(news);
         }
         return  resultList;
+    }
+
+    public void updateNewsStatus(int newStatus, int id) {
+        newsRepository.updateNewsStatus(newStatus, id);
     }
 
 }

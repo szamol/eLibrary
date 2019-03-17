@@ -19,8 +19,6 @@ public class IndexController {
 
     @GetMapping("/")
     public String showIndexPage(Model model){
-
-        //List<News> newsList = newsService.findAllNews();
         List<News> newsList = newsService.findAllActiveNews();
         model.addAttribute("newsList", newsList);
 

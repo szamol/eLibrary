@@ -39,8 +39,8 @@
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" sec:authorize="hasRole('ROLE_WORKER')" th:utext="#{menu.news}" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" th:href="@{/worker/news/}" th:utext="#{workerPanel.listOfNews}"></a>
-                    <a class="dropdown-item" th:href="@{/worker/news/addNews}" th:utext="#{workerPanel.addNews}"></a>
+                    <a class="dropdown-item" th:href="@{/worker/newsList/1}" th:utext="#{workerPanel.listOfNews}"></a>
+                    <a class="dropdown-item" th:href="@{/worker/addNews}" th:utext="#{workerPanel.addNews}"></a>
                 </div>
             </li>
             <li class="nav-item">

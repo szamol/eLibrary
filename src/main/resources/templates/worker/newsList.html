@@ -1,0 +1,67 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4" xmlns="http://www.w3.org/1999/html">
+<head th:replace="mainBar :: head">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title th:utext="#{menu.mainPage}"></title>
+</head>
+<body>
+<nav th:replace="mainBar :: nav"></nav>
+<h1 th:utext="#{menu.news}"></h1>
+
+<div class="d-flex justify-content-center">
+    <div class="w-75 p-3">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col" th:utext="#{news.title}"></th>
+                <th scope="col" th:utext="#{news.content}"></th>
+                <th scope="col" th:utext="#{news.created}"></th>
+                <th scope="col" th:utext="#{news.isActive}"></th>
+            </tr>
+            </thead>
+            <tbody>
+            <th:block th:each="news:${newsList}">
+                <tr>
+                    <td th:utext="${news.id}"></td>
+                    <td th:utext="${news.title}"></td>
+                    <td th:utext="${news.content}" class="newsContent"></td>
+                    <td th:utext="${news.creationDate}"></td>
+                    <div th:switch="${news.isActive}">
+                        <td th:case="0" th:utext="#{news.isActive.false}" style="color: red"></td>
+                        <td th:case="1" th:utext="#{news.isActive.true}" style="color: green"></td>
+                    </div>
+                    <div th:switch="${news.isActive}">
+                        <form th:action="@{/worker/newsList}" method="post">
+                            <input type="hidden" name="id" th:value="${news.id}">
+                            <td th:case="0"><input type="submit" name="statusButton" class="btn btn-success" th:value="#{news.button.activate}"></td>
+                            <td th:case="1"><input type="submit" name="statusButton" class="btn btn-warning" th:value="#{news.button.deactivate}"></td>
+                        </form>
+                    </div>
+                </tr>
+            </th:block>
+            </tbody>
+        </table>
+    </div>
+</div>
+<div class="d-flex justify-content-center">
+    <div th:if="${currentPage > 1}">
+        <a id="prevButton" class="btn btn-primary" th:href="@{/worker/newsList/{page}(page=${currentPage - 1})}" th:utext="#{usersList.previous}"/>
+    </div>
+    <div th:if="${currentPage < totalPages}">
+        <a id="nextButton" class="btn btn-primary ml-1" th:href="@{/worker/newsList/{page}(page=${currentPage + 1})}" th:utext="#{usersList.next}"/>
+    </div>
+</div>
+<div class="d-flex justify-content-center">
+    <p th:utext="${'Page '+currentPage+' of '+totalPages}" style="color: blue;"></p>
+</div>
+
+<script>
+    $(".newsContent").each(function () {
+        var text = $(this).text();
+        if(text.length > 150)
+            $(this).html(text.substr(0, 147) + '...')
+    })
+</script>
+</body>
+</html>
