@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 @Service
@@ -38,4 +39,10 @@ public class NewsService {
         newsRepository.updateNewsStatus(newStatus, id);
     }
 
+    public void saveNews(News news) {
+        news.setIsActive(1);
+        news.setCreationDate(new java.sql.Date(Calendar.getInstance().getTime().getTime()));
+        news.setImgSrc(null);
+        newsRepository.save(news);
+    }
 }

@@ -1,10 +1,30 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4" xmlns="http://www.w3.org/1999/html">
+<head th:replace="mainBar :: head">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title th:utext="#{menu.news}"></title>
 </head>
 <body>
+<nav th:replace="mainBar :: nav"></nav>
+<h1 th:utext="#{workerPanel.addNews}"></h1>
+<div class="d-flex justify-content-center" style="text-align: center">
+    <form th:object="${news}" action="#" th:action="@{/worker/addNews}" method="post" >
+        <div class="form-group">
+            <label th:utext="#{news.title}"></label>
+            <input type="text" class="form-control" value="" name="title" th:field="*{title}">
+            <p th:if="${#fields.hasErrors('title')}" th:errors="*{title}" style="color: red; font-size: 15px" class="text-center"></p>
+        </div>
+        <div class="form-group">
+            <label th:utext="#{news.content}"></label>
+            <input type="text" class="form-control" value="" name="content" th:field="*{content}">
+            <p th:if="${#fields.hasErrors('content')}" th:errors="*{content}" style="color: red; font-size: 15px" class="text-center"></p>
+        </div>
 
+        <div class="text-center">
+            <button type="submit" class="btn btn-success" th:utext="#{news.button.addNews}"></button>
+        </div>
+    </form>
+</div>
+<div class="d-flex justify-content-center" th:utext="${success}" style="color: green"></div>
 </body>
 </html>
