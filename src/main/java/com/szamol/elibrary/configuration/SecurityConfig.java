@@ -48,6 +48,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/login").permitAll()
                 .antMatchers("/register").permitAll()
                 .antMatchers("/addUser").permitAll()
+                .antMatchers("/news/**").permitAll()
                 .antMatchers("/profile").authenticated()
                 .antMatchers("/changePassword").authenticated()
                 .anyRequest().authenticated()
@@ -63,6 +64,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     public void configure(WebSecurity ws) {
         ws.ignoring()
-                .antMatchers("/resources/**", "/static/**", "/css/**", "/js/**", "/images/**", "/incl/**");
+                .antMatchers("/resources/**", "/static/**", "/css/**", "/js/**", "/img/**", "/incl/**");
     }
 }

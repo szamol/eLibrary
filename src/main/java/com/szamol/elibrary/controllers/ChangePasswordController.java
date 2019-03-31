@@ -28,7 +28,7 @@ public class ChangePasswordController {
     public String showChangePasswordPage(Model model) {
         String userEmail = UserUtils.getLoggedUser();
 
-        User user = userService.getUser(userEmail);
+        User user = userService.findByEmail(userEmail);
 
         model.addAttribute("user", user);
 

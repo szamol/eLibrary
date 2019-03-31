@@ -35,7 +35,7 @@ public class RegisterController {
     public String registerAction(User user, BindingResult bindingResult, Model model, Locale locale) {
         String pageToReturn = null;
 
-        User userExist = userService.getUser(user.getEmail());
+        User userExist = userService.findByEmail(user.getEmail());
         new RegisterValidator().validate(user, bindingResult);
         new RegisterValidator().validateEmailExists(userExist, bindingResult);
 

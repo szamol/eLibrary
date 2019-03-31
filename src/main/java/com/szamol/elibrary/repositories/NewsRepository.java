@@ -13,6 +13,8 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional
 public interface NewsRepository extends JpaRepository<News, Integer> {
 
+    News findById(int id);
+
     @Modifying
     @Query("UPDATE News n SET n.isActive = :newStatus WHERE n.id = :id")
     void updateNewsStatus(@Param("newStatus") int newStatus, @Param("id") int id);

@@ -25,6 +25,10 @@ public class NewsService {
         return newsRepository.findAll(pageable);
     }
 
+    public News findById(int id) {
+        return newsRepository.findById(id);
+    }
+
     public List<News> findAllActiveNews() {
         List<News> newsList = newsRepository.findAll();
         List<News> resultList = new ArrayList<>();
